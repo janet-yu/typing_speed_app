@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #E2DCDC;
+}
+.container{
+  margin: 0 auto;
+  width: 80%;
+  font-family: "Inconsolata", sans-serif;
+}
+h1 {
+  text-align: center;
+  color: #4c4b4b;
+  margin: 50px 0 0 0;
+}
+.text {
+  font-size: 2em;
+  padding: 30px;
+  border: 2px solid #E2DCDC;
+  background-color: #FFF9EE;
+  margin: 35px 0 0 0;
+  max-width: 1200px;
+  color: #4c4b4b;
+}
+span {
+  display: inline-block;
+}
+.wpm {
+  margin-top: -50px;
+  color: #4c4b4b;
+}
+.keyboard-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.keyboard-view {
+  display: inline-block;
+  margin: 0 auto;
+}
+.keyboard-key rect {
+  transition: fill .2s ease;
+}
+.pressedBG {
+  fill: #AAA;
+}
+.pressedKey {
+  fill: #FFF;
+}
+.charRight {
+  color: #59b51c;
+}
+.charWrong {
+  color: red;
+}
+.currentChar {
+  animation-name: cursor;
+  animation-duration: .8s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes cursor {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+    color: inherit;
+  }
+  100% {
+    background-color: black;
+    color: white;
+  }
+}
