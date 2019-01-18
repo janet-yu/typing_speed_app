@@ -28,9 +28,13 @@ h1 {
 span {
   display: inline-block;
 }
-.wpm {
-  margin-top: -50px;
+.wpm_errors {
+  text-align: center;
   color: #4c4b4b;
+}
+.wpm_errors h1 {
+  display: inline-block;
+  margin: 0 20px;
 }
 .keyboard-text-container {
   display: flex;

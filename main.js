@@ -1,6 +1,7 @@
 var keys = document.querySelectorAll('.keyboard-key rect');
 var textContainer = document.querySelector('.text');
-var WPM = document.querySelector('.wpm h1');
+var WPM = document.querySelector('#wpm');
+var errorsText = document.querySelector('#errors');
 
 var ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 var VOWELS = 'aeiou';
@@ -15,11 +16,12 @@ var lettersList = document.querySelectorAll('#text span'); // node list of all l
 lettersList[index].classList.add('currentChar');
 
 function main() {
-
+  var errors = 0;
   var keyboardKey;
   var keyboardBG;
   var start;
 
+  // Handles the keydown color changes
   window.addEventListener('keydown', function(e) {
     let charPressed = e.key;
     if (ALPHABET.indexOf(charPressed) != -1) {
@@ -30,6 +32,7 @@ function main() {
     }
   })
 
+  //Handles matching letters logic
   window.addEventListener('keydown', function(e) {
     if (index == 0) {
       start = Date.now();
@@ -44,10 +47,12 @@ function main() {
       lettersList[index].classList.add('currentChar');
       words += 1;
       WPM.innerText = Math.floor(words/(seconds/60)) + ' WPM';
+      errorsText.innerText = errors + ' Errors';
       words = 0;
+      errors = 0;
     } else {
         if (e.key === lettersList[index].innerHTML ||
-         (e.key === ' ' && lettersList[index].innerHTML === '_')) {
+        (e.key === ' ' && lettersList[index].innerHTML === '_')) {
         lettersList[index].classList.add('charRight');
         index++;
         lettersList[index - 1].classList.remove('currentChar');
@@ -58,6 +63,7 @@ function main() {
         }
       } else {
         lettersList[index].classList.add('charWrong');
+        errors++;
       }
    }
   })
