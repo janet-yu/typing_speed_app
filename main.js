@@ -40,10 +40,7 @@ function main() {
     if (index === lettersList.length - 1) {
       var end = Date.now() - start;
       var seconds = Math.floor(end/1000);
-      removeText();
-      appendText();
-      redefineLetters();
-      index = 0;
+      reinitialize();
       lettersList[index].classList.add('currentChar');
       words += 1;
       WPM.innerText = Math.floor(words/(seconds/60)) + ' WPM';
@@ -90,6 +87,7 @@ function generateRandomIndex(type) {
   }
   return randomIndex;
 }
+
 function grabRandomLetter(type) {
   if (type === 'VOWELS') {
     let index = generateRandomIndex(type);
@@ -99,6 +97,7 @@ function grabRandomLetter(type) {
     return CONSONANTS[index];
   }
 }
+
 function generateRandomWord() {
   let wordLength = generateWordLength(6);
   var word = '';
@@ -145,5 +144,12 @@ function removeText() {
 
 function redefineLetters () {
   lettersList = document.querySelectorAll('#text span');
+}
+
+function reinitialize() {
+    removeText();
+    appendText();
+    redefineLetters();
+    index = 0;
 }
 main();
